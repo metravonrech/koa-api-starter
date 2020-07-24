@@ -17,14 +17,14 @@ service.updateLastRequest = async (_id) => {
   });
 };
 
-const privateFields = [
-  'passwordHash',
-  'signupToken',
-  'resetPasswordToken',
-];
+// const privateFields = [
+//   'passwordHash',
+//   'signupToken',
+//   'resetPasswordToken',
+// ];
 
 service.getPublic = (user) => {
-  return _.omit(user, privateFields);
+  return _.omit(user);
 };
 
 module.exports = service;
