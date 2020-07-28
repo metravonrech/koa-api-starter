@@ -8,10 +8,10 @@ const schema = Joi.object({
     .required(),
   age: Joi.string()
     .required(),
-  books: Joi.array().items(Joi.object({
-    _id: Joi.string(),
+  books: Joi.array().items(Joi.object().keys({
+    id: Joi.number().required(),
     title: Joi.string().required(),
-    genre: Joi.string().regex(/^(novel|poem)$/),
+    genre: Joi.string().pattern(new RegExp(/^(novel|poem)$/)).required(),
   })),
 });
 

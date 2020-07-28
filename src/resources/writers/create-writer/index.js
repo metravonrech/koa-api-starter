@@ -22,17 +22,15 @@ const schema = Joi.object({
     .messages({
       'number.empty': 'Age is required',
     }),
-  books: Joi.string()
-    .trim()
-    .required()
-    .messages({
-      'number.empty': 'Age is required',
-    }),
+  books: Joi.array().items(Joi.object().keys({
+    title: Joi.string().required(),
+    genre: Joi.string().pattern(new RegExp(/^(novel|poem)$/)).required(),
+  })),
 });
 
 async function handler(ctx) {
-  await writersService.createWriter(ctx.request.body);
-  ctx.body = 'Article created';
+  const writer = await writersService.createWriter(ctx.request.body);
+  ctx.body = writer;
 }
 
 module.exports.register = (router) => {
