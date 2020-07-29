@@ -1,7 +1,7 @@
 const writersService = require('../writers.service');
 
 async function handler(ctx) {
-  const writer = await writersService.getWriter(ctx.params.id);
+  const writer = await writersService.findOne({ _id: ctx.params.id });
   ctx.body = writer;
 }
 

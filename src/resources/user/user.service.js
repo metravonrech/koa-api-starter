@@ -17,11 +17,12 @@ service.updateLastRequest = async (_id) => {
   });
 };
 
-// const privateFields = [
-//   'passwordHash',
-//   'signupToken',
-//   'resetPasswordToken',
-// ];
+// eslint-disable-next-line no-unused-vars
+const privateFields = [
+  'passwordHash',
+  'signupToken',
+  'resetPasswordToken',
+];
 
 service.getPublic = (user) => {
   return _.omit(user);

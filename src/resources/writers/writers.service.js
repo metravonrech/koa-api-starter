@@ -15,9 +15,6 @@ service.createWriter = async (writer) => {
 };
 
 service.getWriter = async (_id) => {
-  if (!_id) {
-    return service.find({});
-  }
   return service.findOne({ _id });
 };
 
