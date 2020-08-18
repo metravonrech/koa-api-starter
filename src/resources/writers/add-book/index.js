@@ -4,8 +4,9 @@ const validate = require('middlewares/validate');
 const writersService = require('../writers.service');
 
 const bookSchema = Joi.object().keys({
+  id: Joi.string().required(),
   title: Joi.string().required(),
-  genre: Joi.string().pattern(new RegExp(/^(novel|poem)$/)).required(),
+  genre: Joi.string().valid('novel', 'poem').required(),
 }).required();
 
 async function handler(ctx) {

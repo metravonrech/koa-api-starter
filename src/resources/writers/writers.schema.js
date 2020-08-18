@@ -11,7 +11,7 @@ const schema = Joi.object({
   books: Joi.array().items(Joi.object().keys({
     id: Joi.number().required(),
     title: Joi.string().required(),
-    genre: Joi.string().pattern(new RegExp(/^(novel|poem)$/)).required(),
+    genre: Joi.string().valid('novel', 'poem').required(),
   })),
 });
 

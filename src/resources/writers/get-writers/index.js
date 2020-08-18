@@ -12,7 +12,12 @@ async function handler(ctx) {
     perPage: +documentsInPage,
     $sort: { [sortBy]: sortOrder },
   });
-  ctx.body = data;
+  ctx.body = {
+    data: data.results,
+    meta: {
+      numberOfAllDocuments: data.count,
+    },
+  };
 }
 
 module.exports.register = (router) => {

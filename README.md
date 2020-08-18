@@ -36,7 +36,7 @@ Out of the box support following features:
 
 #### Google authorization
 
-Fill data from [google](https://console.developers.google.com/apis/) in `src/config/environment/public.js`
+Fill data from [google](https://console.developers.google.com/apis/) in `src/config/environment/index.js`
 ```
 google: {
   clientId: 'clientId',
