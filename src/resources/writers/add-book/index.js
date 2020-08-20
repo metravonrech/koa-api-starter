@@ -11,7 +11,7 @@ const bookSchema = Joi.object().keys({
 
 async function handler(ctx) {
   if (!ctx.request.body.id) {
-    ctx.statusCode = 418;
+    ctx.statusCode = 404;
     ctx.body = 'Specify id of writer';
   } else {
     const writer = await writersService.addBook(ctx.request.body);
