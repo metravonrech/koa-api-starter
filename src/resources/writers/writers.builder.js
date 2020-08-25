@@ -1,5 +1,6 @@
 const faker = require('faker');
 
+const { v4: uuidv4 } = require('uuid');
 const db = require('tests/db');
 const { WRITERS } = require('tests/constants');
 const BaseBuilder = require('tests/base.builder');
@@ -8,15 +9,16 @@ const validateSchema = require('./writers.schema');
 
 const writers = db.createService(WRITERS.COLLECTION, { validateSchema });
 
-class UserBuilder extends BaseBuilder {
+class WritersBuilder extends BaseBuilder {
   constructor({
     firstName = faker.name.firstName(),
     lastName = faker.name.lastName(),
     age = faker.random.number(),
-    books = {
-      title: faker.adjective(),
+    books = [{
+      id: uuidv4(),
+      title: faker.hacker.adjective(),
       genre: 'poem',
-    },
+    }],
   } = {}) {
     super(writers);
 
@@ -30,4 +32,4 @@ class UserBuilder extends BaseBuilder {
   }
 }
 
-module.exports = UserBuilder;
+module.exports = WritersBuilder;

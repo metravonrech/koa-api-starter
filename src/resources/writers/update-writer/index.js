@@ -24,13 +24,12 @@ const schema = Joi.object({
 
 
 async function handler(ctx) {
-  console.log(ctx.request.body);
   if (!ctx.request.body.id) {
     ctx.statusCode = 418;
     ctx.body = 'Specify id of writer';
   }
-  const writer = await writersService.updateWriter(ctx.request.body);
-  ctx.body = writer;
+  await writersService.updateWriter(ctx.request.body);
+  ctx.body = {};
 }
 
 module.exports.register = (router) => {

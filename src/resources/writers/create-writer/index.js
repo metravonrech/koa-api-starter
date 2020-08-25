@@ -16,8 +16,7 @@ const schema = Joi.object({
     .messages({
       'string.empty': 'Last name is required',
     }),
-  age: Joi.string()
-    .trim()
+  age: Joi.number()
     .required()
     .messages({
       'number.empty': 'Age is required',
